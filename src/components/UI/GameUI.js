@@ -15,17 +15,17 @@ const GameUI = ({ choices, handlePlayerChoice, playerChoice, computerChoice, res
         </Grid>
         <Grid container justifyContent="space-between">
           <Grid item xs={6}>
-            <Paper elevation={3} sx={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', width: '70%', marginRight: 'auto' }}>
+            <Paper elevation={3} sx={{ display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', width: '70%', marginRight: 'auto' }}>
               <Typography variant="h2">Player (YOU)  : </Typography>
-              <Typography variant="h4">{playerChoice}</Typography>
-              <img src={`../assets/${playerChoice}.svg`} height="30%" width="30%" alt="actionImage" />     
+              <img src={`../assets/${playerChoice}.svg`} height="30%" width="30%" alt="actionImage" />    
+              <Typography variant="h4">{playerChoice}</Typography> 
             </Paper>
           </Grid>
           <Grid item xs={6}>
-            <Paper elevation={3} sx={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', width: '70%', marginLeft: 'auto' }}>
+            <Paper elevation={3} sx={{  display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', width: '70%', marginLeft: 'auto' }}>
               <Typography variant="h2">Computer:</Typography>
-              <Typography variant="h4">{computerChoice}</Typography>
               <img src={`../assets/${computerChoice}.svg`} height="30%" width="30%" alt="actionImage" />
+              <Typography variant="h4">{computerChoice}</Typography>
             </Paper>
           </Grid>
         </Grid>
