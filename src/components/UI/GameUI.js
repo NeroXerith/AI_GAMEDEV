@@ -26,15 +26,21 @@ const GameUI = ({ choices, handlePlayerChoice, playerChoice, computerChoice, res
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
           <Box elevation={3} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', height: '100%', width: '60%' }}>
             <Typography variant="h2">Player (YOU):</Typography>
-            <Image src={images[playerChoice]} height="100%" width="100%" alt="actionImage" />
+            <div style={{ height: '100%', width: '100%' }}>
+              <Image src={images[playerChoice]} layout="responsive" objectFit="contain" alt="actionImage" />
+            </div>
             <Typography variant="h4">{playerChoice}</Typography>
           </Box>
           <Box sx={{ marginLeft: '15px' }}>
-            <Image src={vsImage} height="90%" width="90%" alt="vs" />
+            <div style={{ height: '90%', width: '90%' }}>
+              <Image src={vsImage} layout="responsive" objectFit="contain" alt="vs" />
+            </div>
           </Box>
           <Box elevation={3} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', height: '100%', width: '60%' }}>
             <Typography variant="h2">Computer:</Typography>
-            <Image src={images[computerChoice]} height="100%" width="100%" style={{ transform: 'scaleX(-1)' }} alt="actionImage" />
+            <div style={{ height: '100%', width: '100%', transform: 'scaleX(-1)' }}>
+              <Image src={images[computerChoice]} layout="responsive" objectFit="contain" alt="actionImage" />
+            </div>
             <Typography variant="h4">{computerChoice}</Typography>
           </Box>
         </Box>
