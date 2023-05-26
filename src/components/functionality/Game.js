@@ -3,7 +3,7 @@ import { minBy, maxBy } from 'lodash';
 import GameUI from '../UI/GameUI';
 
 const Game = () => {
-  const [playerChoice, setPlayerChoice] = useState(null);
+  const [playerChoice, setPlayerChoice] = useState('');
   const [computerChoice, setComputerChoice] = useState(null);
   const [result, setResult] = useState(null);
   const [playerRecentMove, setPlayerRecentMove] = useState(null);
@@ -11,6 +11,36 @@ const Game = () => {
   const choices = ['rock', 'paper', 'scissors'];
 
   useEffect(() => {
+    const determineResult = (playerChoice) => {
+      const outcomes = {
+        rock: {
+          rock: 0,
+          paper: -1,
+          scissors: 1,
+        },
+        paper: {
+          rock: 1,
+          paper: 0,
+          scissors: -1,
+        },
+        scissors: {
+          rock: -1,
+          paper: 1,
+          scissors: 0,
+        },
+      };
+  
+      const outcome = outcomes[playerChoice][computerChoice];
+  
+      if (outcome === 0) {
+        setResult('Tie!');
+      } else if (outcome === 1) {
+        setResult(`You win! Computer chose ${computerChoice}.`);
+      } else {
+        setResult(`Computer wins! It chose ${computerChoice}.`);
+      }
+    };
+
     if (playerChoice && computerChoice) {
       determineResult(playerChoice);
     }
@@ -21,24 +51,6 @@ const Game = () => {
       setPlayerRecentMove(playerChoice);
     }
   }, [playerChoice]);
-
-  const outcomes = {
-    rock: {
-      rock: 0,
-      paper: -1,
-      scissors: 1,
-    },
-    paper: {
-      rock: 1,
-      paper: 0,
-      scissors: -1,
-    },
-    scissors: {
-      rock: -1,
-      paper: 1,
-      scissors: 0,
-    },
-  };
 
   const makeComputerChoice = () => {
     if (playerRecentMove) {
@@ -58,18 +70,6 @@ const Game = () => {
   const handlePlayerChoice = (choice) => {
     setPlayerChoice(choice);
     makeComputerChoice();
-  };
-
-  const determineResult = (playerChoice) => {
-    const outcome = outcomes[playerChoice][computerChoice];
-
-    if (outcome === 0) {
-      setResult('Tie!');
-    } else if (outcome === 1) {
-      setResult(`You win! Computer chose ${computerChoice}.`);
-    } else {
-      setResult(`Computer wins! It chose ${computerChoice}.`);
-    }
   };
 
   return (
