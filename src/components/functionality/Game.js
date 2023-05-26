@@ -3,10 +3,10 @@ import { minBy, maxBy } from 'lodash';
 import GameUI from '../UI/GameUI';
 
 const Game = () => {
-  const [playerChoice, setPlayerChoice] = useState('');
-  const [computerChoice, setComputerChoice] = useState('');
-  const [result, setResult] = useState('');
-  const [playerRecentMove, setPlayerRecentMove] = useState('');
+  const [playerChoice, setPlayerChoice] = useState(null);
+  const [computerChoice, setComputerChoice] = useState(null);
+  const [result, setResult] = useState(null);
+  const [playerRecentMove, setPlayerRecentMove] = useState(null);
 
   const choices = ['rock', 'paper', 'scissors'];
 
@@ -49,7 +49,7 @@ const Game = () => {
       const computerMove = Math.random() < 0.5 ? bestMove : worstMove;
       setComputerChoice(computerMove);
     } else {
-      // Initial move of computer is random move since playerRecentMove is empty
+      // Select a random move if playerRecentMove is null
       const randomMove = choices[Math.floor(Math.random() * choices.length)];
       setComputerChoice(randomMove);
     }

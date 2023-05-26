@@ -1,16 +1,5 @@
 import React from 'react';
 import { Button, Box, Container, Typography, Paper } from '@mui/material';
-import Image from 'next/image';
-import rockImage from '../assets/rock.svg';
-import paperImage from '../assets/paper.svg';
-import scissorsImage from '../assets/scissors.svg';
-import vsImage from '../assets/vs.svg';
-
-const images = {
-  rock: rockImage,
-  paper: paperImage,
-  scissors: scissorsImage,
-};
 
 const GameUI = ({ choices, handlePlayerChoice, playerChoice, computerChoice, result }) => {
   return (
@@ -26,21 +15,15 @@ const GameUI = ({ choices, handlePlayerChoice, playerChoice, computerChoice, res
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
           <Box elevation={3} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', height: '100%', width: '60%' }}>
             <Typography variant="h2">Player (YOU):</Typography>
-            <div style={{ height: '100%', width: '100%' }}>
-              <Image src={images[playerChoice]} layout="responsive" objectFit="contain" alt="actionImage" />
-            </div>
+            <img src={`../assets/${playerChoice}.svg`} height="100%" width="100%" alt="actionImage" />
             <Typography variant="h4">{playerChoice}</Typography>
           </Box>
           <Box sx={{ marginLeft: '15px' }}>
-            <div style={{ height: '90%', width: '90%' }}>
-              <Image src={vsImage} layout="responsive" objectFit="contain" alt="vs" />
-            </div>
+            <img src="../assets/vs.svg" height="90%" width="90%" alt="vs" />
           </Box>
           <Box elevation={3} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', height: '100%', width: '60%' }}>
             <Typography variant="h2">Computer:</Typography>
-            <div style={{ height: '100%', width: '100%', transform: 'scaleX(-1)' }}>
-              <Image src={images[computerChoice]} layout="responsive" objectFit="contain" alt="actionImage" />
-            </div>
+            <img src={`../assets/${computerChoice}.svg`} height="100%" width="100%" style={{ transform: 'scaleX(-1)' }} alt="actionImage" />
             <Typography variant="h4">{computerChoice}</Typography>
           </Box>
         </Box>
