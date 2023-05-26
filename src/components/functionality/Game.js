@@ -4,43 +4,13 @@ import GameUI from '../UI/GameUI';
 
 const Game = () => {
   const [playerChoice, setPlayerChoice] = useState('');
-  const [computerChoice, setComputerChoice] = useState(null);
-  const [result, setResult] = useState(null);
-  const [playerRecentMove, setPlayerRecentMove] = useState(null);
+  const [computerChoice, setComputerChoice] = useState('');
+  const [result, setResult] = useState('');
+  const [playerRecentMove, setPlayerRecentMove] = useState('');
 
   const choices = ['rock', 'paper', 'scissors'];
 
   useEffect(() => {
-    const determineResult = (playerChoice) => {
-      const outcomes = {
-        rock: {
-          rock: 0,
-          paper: -1,
-          scissors: 1,
-        },
-        paper: {
-          rock: 1,
-          paper: 0,
-          scissors: -1,
-        },
-        scissors: {
-          rock: -1,
-          paper: 1,
-          scissors: 0,
-        },
-      };
-  
-      const outcome = outcomes[playerChoice][computerChoice];
-  
-      if (outcome === 0) {
-        setResult('Tie!');
-      } else if (outcome === 1) {
-        setResult(`You win! Computer chose ${computerChoice}.`);
-      } else {
-        setResult(`Computer wins! It chose ${computerChoice}.`);
-      }
-    };
-
     if (playerChoice && computerChoice) {
       determineResult(playerChoice);
     }
@@ -52,6 +22,24 @@ const Game = () => {
     }
   }, [playerChoice]);
 
+  const outcomes = {
+    rock: {
+      rock: 0,
+      paper: -1,
+      scissors: 1,
+    },
+    paper: {
+      rock: 1,
+      paper: 0,
+      scissors: -1,
+    },
+    scissors: {
+      rock: -1,
+      paper: 1,
+      scissors: 0,
+    },
+  };
+
   const makeComputerChoice = () => {
     if (playerRecentMove) {
       const bestMove = maxBy(choices, (choice) => outcomes[choice][playerRecentMove]);
@@ -61,7 +49,7 @@ const Game = () => {
       const computerMove = Math.random() < 0.5 ? bestMove : worstMove;
       setComputerChoice(computerMove);
     } else {
-      // Select a random move if playerRecentMove is null
+      // Initial move of computer is random move since playerRecentMove is empty
       const randomMove = choices[Math.floor(Math.random() * choices.length)];
       setComputerChoice(randomMove);
     }
@@ -70,6 +58,18 @@ const Game = () => {
   const handlePlayerChoice = (choice) => {
     setPlayerChoice(choice);
     makeComputerChoice();
+  };
+
+  const determineResult = (playerChoice) => {
+    const outcome = outcomes[playerChoice][computerChoice];
+
+    if (outcome === 0) {
+      setResult('Tie!');
+    } else if (outcome === 1) {
+      setResult(`You win! Computer chose ${computerChoice}.`);
+    } else {
+      setResult(`Computer wins! It chose ${computerChoice}.`);
+    }
   };
 
   return (
