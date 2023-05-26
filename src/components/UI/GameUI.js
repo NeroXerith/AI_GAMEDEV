@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Box, Container, Typography, Paper } from '@mui/material';
+import Image from 'next/image';
 
 const GameUI = ({ choices, handlePlayerChoice, playerChoice, computerChoice, result }) => {
   return (
