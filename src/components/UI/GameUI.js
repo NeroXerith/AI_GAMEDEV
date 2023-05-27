@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Box, Container, Typography, Paper } from '@mui/material';
+import { Button, Box, Container, Typography, Alert } from '@mui/material';
 
 const GameUI = ({ choices, handlePlayerChoice, playerChoice, computerChoice, result }) => {
   return (
+    <>
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Typography variant="h6">ACTIONS :</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         {choices.map((choice) => (
           <Button key={choice} variant="contained" color="primary" onClick={() => handlePlayerChoice(choice)} sx={{ margin: '1rem' }}>
@@ -29,8 +31,11 @@ const GameUI = ({ choices, handlePlayerChoice, playerChoice, computerChoice, res
         </Box>
       </Container>
 
-      <Typography variant="h2">Result: {result}</Typography>
+          <Alert severity="info"  sx={{marginTop:'1.5rem'}}>
+          <Typography variant="h2">Result: {result}</Typography>
+          </Alert>
     </div>
+    </>
   );
 };
 
