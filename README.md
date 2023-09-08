@@ -1,3 +1,8 @@
+``` Implementations: Advarsial search, min and max algorithm. using minBy and maxBy lodash dependency in finding the optimal decision of the computer's move base to the recentMove and patterns to beat the possible next move of the player. 
+
+APP LINK : https://ai-gamedev.netlify.app
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
